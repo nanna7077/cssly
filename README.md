@@ -8,7 +8,7 @@ CSSly is a self-hostable web application that allows you to compete with other d
 
 CSSly comes with the following features:
 
-- 🕹️ Private Battles: Create your own battles and invite only the participants you want.
+- 🕹️ Private Battles: Create your own battles and invite only the participants you want. [Work in Progress]
 - ⏰ Start/End Time: Set start and end times for your battles, giving participants a specific window to compete.
 - 🏆 Leaderboards: Track your progress and compare your score with other participants on the leaderboard.
 - 🌍 Global Leaderboard: View the scores of participants from all battles hosted on the instance.
