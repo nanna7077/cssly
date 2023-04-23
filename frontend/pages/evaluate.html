@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSSly</title>
+        <link rel="stylesheet" href="../static/styles/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+
+    <body>
+        <div class="topbar">
+            <div class="topbar-item">
+                <div class="logo" onclick="window.location.href='/pages/home.html'">CSSly</div>
+                <button style="background-color: #ff00bb; font-size: .9rem; color: rgb(14, 7, 37);" onclick="window.location.href='/pages/createchallenge.html';">
+                    Create New Challenge
+                </button>
+            </div>
+            <div style="display: flex;">
+                <div class="topbar-item calm-link" style="display: flex; align-items: center; gap: 10px;">
+                    <div style="font-size: 1rem;">
+                        Logged In as 
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <span class="display-username" style="color: #ff00bb; font-weight: bold;"></span>
+                    </div>
+                </div>
+                <button style="background-color: #ff00bb; font-size: .9rem; color: rgb(14, 7, 37);" onclick="logout();">
+                    Logout
+                </button>
+            </div>
+        </div>
+        <br>
+        <div id="questions">
+        </div>
+    </body>
+
+    <script src="../static/scripts/common.js"></script>
+    <script src="../static/scripts/logincheck.js"></script>
+    <script src="../static/scripts/evaluate.js"></script>
+</html>

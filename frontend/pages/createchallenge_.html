@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSSly</title>
+        <link rel="stylesheet" href="../static/styles/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+
+    <body>
+        <div class="topbar">
+            <div class="topbar-item">
+                <div class="logo" onclick="window.location.href='/pages/home.html'">CSSly</div>
+            </div>
+            <div style="display: flex;">
+                <div class="topbar-item calm-link" style="display: flex; align-items: center; gap: 10px;">
+                    <div style="font-size: 1rem;">
+                        Logged In as 
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <span class="display-username" style="color: #ff00bb; font-weight: bold;"></span>
+                    </div>
+                </div>
+                <button style="background-color: #ff00bb; font-size: .9rem; color: rgb(14, 7, 37);" onclick="logout();">
+                    Logout
+                </button>
+            </div>
+        </div>
+        <br>
+        <div>
+            <center>
+                <div style="font-weight: bold; font-size: 1.3rem;">Create Challenge</div>
+            </center>
+            <br>
+            <div style="margin-left: 10%; margin-right: 10%;">
+                <br>
+                <div>
+                    Challenge Name
+                    <br>
+                    <input type="text" id="challenge-name">
+                </div>
+                <br>
+                <div>
+                    Challenge Description
+                    <br>
+                    <textarea id="challenge-desc" style="background: none;
+                    border: none;
+                    background-color: rgba(255, 255, 255, 0.4);
+                    color: aliceblue;
+                    font-size: 1.15rem;
+                    padding: 4px;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    margin-top: 4px;
+                    margin-bottom: 4px;" cols="30" rows="3"></textarea>
+                </div>
+                <br>
+                <div>
+                    Start Date and Time
+                    <br>
+                    <input type="date" id="challenge-startdate">
+                    <input type="time" id="challenge-starttime">
+                </div>
+                <br>
+                <div>
+                    End Date and Time
+                    <br>
+                    <input type="date" id="challenge-enddate">
+                    <input type="time" id="challenge-endtime">
+                </div>
+                <br>
+                <div>
+                    Number of Questions (for participant)
+                    <br>
+                    <input type="text" id="challenge-question-count">
+                </div>
+                <br>
+                <div style="display: flex; gap: 20px;">
+                
+                    <div>
+                        Make Leaderboard Private?
+                        <br>
+                        <input type="checkbox" id="challenge-showleaderboard">
+                    </div>
+                    <br>
+                    <div>
+                        Make Challenge Invite only?
+                        <br>
+                        <input type="checkbox" id="challenge-inviteonly">
+                    </div>
+                    <br>
+                    <div>
+                        Restrict Tab-Switching?
+                        <br>
+                        <input type="checkbox" id="challenge-restricttabswitch">
+                    </div>
+                    <br>
+                    <div>
+                        Restrict Copy-Paste?
+                        <br>
+                        <input type="checkbox" id="challenge-restrictcopypaste">
+                    </div>
+                    <div>
+                        Manual Evaluation? (Recommended if your questions involve animations)
+                        <br>
+                        <input type="checkbox" id="challenge-manualevaluation">
+                    </div>
+                </div>
+                <br><br>
+                <span style="font-size: 1.1rem; font-weight: bold;">Questions:</span>
+                <br><br>
+                <div id="questions" style="display: flex; gap: 25px; flex-wrap: wrap;">
+                </div>
+                <br><br>
+                <button style="font-size: 1rem;" onclick="addQuestion();">
+                    + Add Question
+                </button>
+                <br><br>
+                <button style="background-color: #ff00bb; font-size: 1.1rem; color: rgb(14, 7, 37);" onclick="createChallenge()">
+                    Create New Challenge
+                </button>
+        </div>
+        <br><br>
+    </body>
+
+    <script src="../static/scripts/common.js"></script>
+    <script src="../static/scripts/logincheck.js"></script>
+    <script src="../static/scripts/createchallenge.js"></script>
+</html>

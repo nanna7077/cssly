@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSSly</title>
+        <link rel="stylesheet" href="../static/styles/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+
+    <body>
+        <div class="topbar">
+            <div class="topbar-item">
+                <div class="logo" onclick="window.location.href='/pages/home.html'">CSSly</div>
+                <button style="background-color: #ff00bb; font-size: .9rem; color: rgb(14, 7, 37);" onclick="window.location.href='/pages/createchallenge.html';">
+                    Create New Challenge
+                </button>
+            </div>
+            <div style="display: flex;">
+                <div class="topbar-item calm-link" style="display: flex; align-items: center; gap: 10px;">
+                    <div style="font-size: 1rem;">
+                        Logged In as 
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <span class="display-username" style="color: #ff00bb; font-weight: bold;"></span>
+                    </div>
+                </div>
+                <button style="background-color: #ff00bb; font-size: .9rem; color: rgb(14, 7, 37);" onclick="logout();">
+                    Logout
+                </button>
+            </div>
+        </div>
+        <br>
+        <div style="padding: 10px;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                <div>
+                    <div class="display-challenge-name" style="font-size: 1.3rem; color: #ff00bb; font-weight: bold;"></div>
+                    <span style="font-size: .9rem;">Created by <span class="display-challenge-creator" style="color: #ff00bb;">Test</span></span>
+                    <div class="display-challenge-description" style="font-size: 1rem;"></div>
+                    <span>Starts at <span style="color: #ff00bb;" class="display-challenge-startTime"></span> and ends at <span style="color: #ff00bb;" class="display-challenge-endTime"></span></span>
+                    <br><span>Questions: <span class="display-challenge-questions" style="color: #ff00bb;"></span>&nbsp;&nbsp;|&nbsp;&nbsp;Question Pool Size: <span class="display-challenge-questionPool" style="color: #ff00bb;"></span></span>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; width: 30%; justify-content: space-evenly;">
+                    <div id="tabswitchrestriction" style="margin: 2px; padding: 3px; padding-left: 4px; padding-right: 4px; border-radius: 3px; height: fit-content;"><span id="tabswitchrestrictioncheck"></span>Tab Switch Restricted</div>
+                    <div id="copypasterestriction" style="margin: 2px; padding: 3px; padding-left: 4px; padding-right: 4px; border-radius: 3px; height: fit-content;"><span id="copypasterestrictioncheck"></span>Copy Paste Restricted</div>
+                    <div id="manualevaluation" style="margin: 2px; padding: 3px; padding-left: 4px; padding-right: 4px; border-radius: 3px; height: fit-content;"><span id="manualevaluationcheck"></span>Manually Evaluated</div>
+                    <div id="publicleaderboard" style="margin: 2px; padding: 3px; padding-left: 4px; padding-right: 4px; border-radius: 3px; height: fit-content;"><span id="publicleaderboardcheck"></span>Public Leaderboard</div>
+                    <div id="inviteonly" style="margin: 2px; padding: 3px; padding-left: 4px; padding-right: 4px; border-radius: 3px; height: fit-content;"><span id="inviteonlycheck"></span>Invite Only</div>
+                </div>
+            </div>
+            <br><br>
+            <center>
+                <div style="display: flex; justify-content: space-evenly;">
+                    <button style="background-color: #ff00bb; font-size: .9rem; color: rgb(14, 7, 37); display: none;" onclick="enroll();" id="enroll-button">
+                        Enroll in this challenge
+                    </button>
+                    <button style="background-color: #ff00bb; font-size: .9rem; color: rgb(14, 7, 37); display: none;" onclick="startChallenge();" id="start-button">
+                        Start Challenge
+                    </button>
+                </div>
+            </center>
+            <br><br>
+            <div style="display: flex; justify-content: space-around;">
+                <div>
+                    Leaderboard
+                    <div id="leaderboard" style="margin-top: 10px;">
+                        </table>
+                    </div>
+                </div>
+                <div id="adminextras" style="display: none;">
+                    Add Admin(s)
+                    <br>
+                    <input type="text" id="adminadd" placeholder="Enter username">
+                    <button onclick="addAdmin();">Add</button>
+                    <br>
+                    <span style="font-size: .85rem;"><b>Current Admin's are: </b><span id="currentadmins"></span></span>
+                    <hr>
+                    Enrolled User(s)
+                    <br><br>
+                    <span style="font-size: .9rem;"><div id="currentenrolled" style="max-width: 520px; overflow: scroll;"></div></span>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="../static/scripts/common.js"></script>
+    <script src="../static/scripts/logincheck.js"></script>
+    <script src="../static/scripts/challenge.js"></script>
+</html>

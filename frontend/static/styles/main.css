@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;1,600;1,800&display=swap');
+
+body {
+    background: rgb(14, 7, 37);
+    color: aliceblue;
+    font-family: 'Poppins', sans-serif;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-item {
+    margin: 8px;
+    font-size: 1.1rem;
+}
+
+.logo {
+    color: #ff00bb;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 1.4rem;
+}
+
+.calm-link {
+    cursor: pointer;
+}
+
+.calm-link:hover {
+    color: #ff00bb;
+    text-decoration: none;
+}
+
+.glassify {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.rounded {
+    border-radius: 4px;
+    padding: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+input {
+    background: none;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: aliceblue;
+    font-size: 1.15rem;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+button {
+    background: none;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: aliceblue;
+    font-size: 1.2rem;
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #ff00bb;
+    color: black;
+}
+
+.questionsbox {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.questionsbox:hover, .questionsbox-active {
+    color: black;
+    background-color: #ff00bb;
+}
+
+table {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: aliceblue;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 2px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #000;
+    padding-right: 4px;
+    text-align: center;
+}

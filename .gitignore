@@ -1,0 +1,5 @@
+backend/logs/*
+test.db
+backend/instance/*
+__pycache__
+backend/userdatastore/*

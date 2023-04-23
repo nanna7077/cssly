@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSSly</title>
+        <link rel="stylesheet" href="../static/styles/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+
+    <body>
+        <div class="topbar">
+            <div class="topbar-item">
+                <div class="logo" onclick="window.location.href='/pages/home.html'">CSSly</div>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="font-size: .8rem;">Challenge Ends in</div>
+                <div id="challenge-time-counter" style="color: #ff00bb; font-size: 1.2rem;">00:00</div>
+            </div>
+            <div style="display: flex;">
+                <div class="topbar-item calm-link" style="display: flex; align-items: center; gap: 10px;">
+                    <div style="font-size: 1rem;">
+                        Logged In as 
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <span class="display-username" style="color: #ff00bb; font-weight: bold;"></span>
+                    </div>
+                </div>
+                <button style="background-color: #ff00bb; font-size: .9rem; color: rgb(14, 7, 37);" onclick="logout();">
+                    Logout
+                </button>
+            </div>
+        </div>
+        <div style="margin: 10px; margin-top: 2px; margin-bottom: 2px;">
+            Challenge <span class="display-challenge-name" style="color: #ff00bb; font-size: 1.1rem; font-weight: bold;"></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+            Question <span id="display-challenge-qnum" style="color: #ff00bb; font-size: 1.1rem; font-weight: bold;"></span>
+        </div>
+        <div style="display: flex; justify-content: space-evenly; width: 100%; height: 80vh;">
+            <div class="editor-container" style="width: 50%; height: 100%; border: 1px solid #ff00bb;"></div>
+            <div style="width: 48%; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="height: 15%; overflow-y: scroll; word-wrap: break-word; border: 1px solid #ff00bb; padding: 10px;" id="question-current-ques"></div>
+                <div style="height: 40%;">
+                    <iframe id="currentcodedisp" style="width: 99.5%; height: 99.4%; background-color: aliceblue;" src=""></iframe>
+                </div>
+                <div style="border: 1px solid #ff00bb; height: 40%; padding: 5px;">
+                    <b>Expected Output:</b>
+                    <div style="display: flex; align-items: center; height: 90%;" id="questionmediadisp"></div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div style="margin: 10px; margin-top: 2px; margin-bottom: 2px; display: flex; gap: 10px;">
+            <button style="font-weight: bold; background-color: rgb(14, 7, 37); border: 1px solid #ff00bb; color: white; padding: 10px; border-radius: 5px; font-size: 1rem; cursor: pointer;" id="savecodebutton" onclick="saveCurrentCode()" onmouseover="this.style.backgroundColor = '#ff00bb'; this.style.color = 'black';" onmouseleave="this.style.color = 'white'; this.style.backgroundColor = 'rgb(14, 7, 37)';">Save</button>
+            <div>
+                Questions
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;" id="questionsbox">
+                    <div class="questionsbox" onclick="changeQuestion(1)">1</div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+    <script type="text/javascript" src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../static/scripts/common.js"></script>
+    <script src="../static/scripts/logincheck.js"></script>
+    <script src="../static/scripts/questionView.js"></script>
+    <script>
+        var saveInterval = null;
+        require.config({
+            paths: {
+                'vs': 'https://unpkg.com/monaco-editor@latest/min/vs'
+            }
+        });
+        window.MonacoEnvironment = {
+                getWorkerUrl: function(workerId, label) {
+                        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+            self.MonacoEnvironment = {
+              baseUrl: 'https://unpkg.com/monaco-editor@latest/min/'
+            };
+            importScripts('https://unpkg.com/monaco-editor@latest/min/vs/base/worker/workerMain.js');`
+          )}`;
+        }
+      };
+    
+      require(["vs/editor/editor.main"], function () {
+        document.editor=monaco.editor.create(document.querySelector('.editor-container'), {
+          value: '<html></html>',
+          language: 'html',
+          automaticLayout: true,
+          formatOnPaste: true,
+          formatOnType: true,
+          theme: 'vs-dark',
+          fontSize: "14px"
+        });
+        document.editor.getModel().updateOptions({ tabSize: 4, "bracketPairColorization.enabled": true });
+        document.editor.onDidChangeCursorSelection((e)=>{document.getElementById('linenumber').innerHTML=e.selection.positionLineNumber; document.getElementById('totallines').innerHTML=document.editor.getModel().getLineCount() })
+        document.editor.onDidChangeModelContent((e)=>{reloadCodePreview();})
+        document.editor.onKeyDown((event)=>{
+            const {keyCode, ctrlKey, shiftKey, metaKey} = event;
+            if((keyCode === 33 || keyCode === 52 || keyCode === 45 || keyCode === 19) && (metaKey || ctrlKey || shiftKey)){
+                copyPasteOccurred();
+                event.preventDefault();
+            }
+        });
+        
+        saveInterval = setInterval(()=>{saveCurrentCode();}, 30000);
+        
+      });
+
+    </script>
+</html>
